@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Guitar Emporium - Premium Air Guitars & Parts</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎸 Air Guitar Emporium</h1>
+            <p class="tagline">Where Dreams Become... Air!</p>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 Cart (<span id="cart-count">0</span>)
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Welcome to the World's Premier Air Guitar Store</h2>
+            <p>Experience the finest invisible instruments money can buy!</p>
+        </section>
+
+        <section class="products">
+            <h2>Our Products</h2>
+            
+            <div class="product-category">
+                <h3>🎸 Complete Air Guitars</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-product-id="air-strat">
+                        <div class="product-image">🎸</div>
+                        <h4>Air Stratocaster</h4>
+                        <p class="description">Classic design, zero weight, infinite tone</p>
+                        <p class="price">$299.99</p>
+                        <button class="add-to-cart" onclick="addToCart('air-strat', 'Air Stratocaster', 29999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="air-les-paul">
+                        <div class="product-image">🎸</div>
+                        <h4>Air Les Paul</h4>
+                        <p class="description">Legendary sustain, invisible mahogany body</p>
+                        <p class="price">$399.99</p>
+                        <button class="add-to-cart" onclick="addToCart('air-les-paul', 'Air Les Paul', 39999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="air-tele">
+                        <div class="product-image">🎸</div>
+                        <h4>Air Telecaster</h4>
+                        <p class="description">Twangy tone, weightless ash body</p>
+                        <p class="price">$279.99</p>
+                        <button class="add-to-cart" onclick="addToCart('air-tele', 'Air Telecaster', 27999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <h3>🪵 Air Guitar Bodies</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-product-id="body-strat">
+                        <div class="product-image">🪵</div>
+                        <h4>Stratocaster Body</h4>
+                        <p class="description">Contoured alder air body</p>
+                        <p class="price">$149.99</p>
+                        <button class="add-to-cart" onclick="addToCart('body-strat', 'Stratocaster Body', 14999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="body-custom">
+                        <div class="product-image">🪵</div>
+                        <h4>Custom Shop Body</h4>
+                        <p class="description">Hand-crafted invisible wood</p>
+                        <p class="price">$199.99</p>
+                        <button class="add-to-cart" onclick="addToCart('body-custom', 'Custom Shop Body', 19999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <h3>🎯 Air Guitar Necks</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-product-id="neck-maple">
+                        <div class="product-image">🎯</div>
+                        <h4>Maple Neck</h4>
+                        <p class="description">22 frets of pure imagination</p>
+                        <p class="price">$99.99</p>
+                        <button class="add-to-cart" onclick="addToCart('neck-maple', 'Maple Neck', 9999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="neck-rosewood">
+                        <div class="product-image">🎯</div>
+                        <h4>Rosewood Neck</h4>
+                        <p class="description">Warm tone, ethereal feel</p>
+                        <p class="price">$119.99</p>
+                        <button class="add-to-cart" onclick="addToCart('neck-rosewood', 'Rosewood Neck', 11999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <h3>🔌 Air Pickups</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-product-id="pickup-single">
+                        <div class="product-image">🔌</div>
+                        <h4>Single Coil Pickup</h4>
+                        <p class="description">Bright, crisp air tones</p>
+                        <p class="price">$49.99</p>
+                        <button class="add-to-cart" onclick="addToCart('pickup-single', 'Single Coil Pickup', 4999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="pickup-humbucker">
+                        <div class="product-image">🔌</div>
+                        <h4>Humbucker Pickup</h4>
+                        <p class="description">Fat, noise-free air sound</p>
+                        <p class="price">$69.99</p>
+                        <button class="add-to-cart" onclick="addToCart('pickup-humbucker', 'Humbucker Pickup', 6999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="pickup-set">
+                        <div class="product-image">🔌</div>
+                        <h4>Premium Pickup Set</h4>
+                        <p class="description">Complete tonal versatility</p>
+                        <p class="price">$149.99</p>
+                        <button class="add-to-cart" onclick="addToCart('pickup-set', 'Premium Pickup Set', 14999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <h3>🌉 Air Bridges</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-product-id="bridge-tremolo">
+                        <div class="product-image">🌉</div>
+                        <h4>Tremolo Bridge</h4>
+                        <p class="description">Vintage-style vibrato system</p>
+                        <p class="price">$79.99</p>
+                        <button class="add-to-cart" onclick="addToCart('bridge-tremolo', 'Tremolo Bridge', 7999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="bridge-fixed">
+                        <div class="product-image">🌉</div>
+                        <h4>Fixed Bridge</h4>
+                        <p class="description">Rock-solid tuning stability</p>
+                        <p class="price">$59.99</p>
+                        <button class="add-to-cart" onclick="addToCart('bridge-fixed', 'Fixed Bridge', 5999)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-category">
+                <h3>🎵 Air Strings</h3>
+                <div class="product-grid">
+                    <div class="product-card" data-product-id="strings-light">
+                        <div class="product-image">🎵</div>
+                        <h4>Light Gauge Strings</h4>
+                        <p class="description">Easy bending, smooth feel (.009-.042)</p>
+                        <p class="price">$9.99</p>
+                        <button class="add-to-cart" onclick="addToCart('strings-light', 'Light Gauge Strings', 999)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="strings-medium">
+                        <div class="product-image">🎵</div>
+                        <h4>Medium Gauge Strings</h4>
+                        <p class="description">Balanced tone and feel (.010-.046)</p>
+                        <p class="price">$10.99</p>
+                        <button class="add-to-cart" onclick="addToCart('strings-medium', 'Medium Gauge Strings', 1099)">Add to Cart</button>
+                    </div>
+                    <div class="product-card" data-product-id="strings-heavy">
+                        <div class="product-image">🎵</div>
+                        <h4>Heavy Gauge Strings</h4>
+                        <p class="description">Maximum sustain and tone (.011-.050)</p>
+                        <p class="price">$11.99</p>
+                        <button class="add-to-cart" onclick="addToCart('strings-heavy', 'Heavy Gauge Strings', 1199)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total:</strong>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button id="checkout-button" class="checkout-button" onclick="checkout()" disabled>Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <footer>
+        <div class="container">
+            <div class="disclaimer">
+                <h3>⚠️ Important Disclaimer</h3>
+                <p><strong>This is a satirical website.</strong> While real purchases can be made through our payment system, please be aware that <strong>NO PHYSICAL PRODUCTS WILL BE SHIPPED</strong>. Air guitars are, by their very nature, intangible and exist only in the realm of imagination and air. Any payments made are for entertainment purposes only. By proceeding with a purchase, you acknowledge that you are buying the concept and experience of owning an air guitar, not a physical product.</p>
+                <p class="small-print">All sales are final. Refunds available upon request because, well, we didn't ship you anything anyway.</p>
+            </div>
+            <p class="copyright">&copy; 2026 Air Guitar Emporium. All rights reserved (or not, they're just air).</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
