@@ -29,7 +29,26 @@ A satirical e-commerce website for purchasing air guitars and air guitar parts. 
 
 ## Getting Started
 
-### View the Website
+### Hosting with GitHub Pages
+
+This site is configured to be hosted on GitHub Pages. To set it up:
+
+1. **Enable GitHub Pages:**
+   - Go to your repository settings on GitHub
+   - Navigate to "Pages" in the left sidebar
+   - Under "Source", select "GitHub Actions"
+   
+2. **Deploy:**
+   - The site will automatically deploy when you push to the `main` branch
+   - The GitHub Actions workflow (`.github/workflows/deploy.yml`) handles the deployment
+   - You can also manually trigger deployment from the Actions tab
+   
+3. **Access Your Site:**
+   - Once deployed, your site will be available at:
+     `https://[your-username].github.io/[repository-name]/`
+   - For example: `https://ZSECURE.github.io/vigilant-waddle/`
+
+### View the Website Locally
 
 Simply open `index.html` in your web browser:
 
@@ -48,18 +67,29 @@ Then navigate to `http://localhost:8000` in your browser.
 
 ### Setting Up Stripe Integration (Optional)
 
+⚠️ **SECURITY WARNING:** The Stripe API key is currently set to `ABCD-1234-EFGH-5678` in `script.js`. 
+
+**IMPORTANT SECURITY NOTES:**
+- **NEVER** commit secret keys (sk_test_* or sk_live_*) to your repository
+- Only use **publishable keys** (pk_test_* or pk_live_*) in client-side code
+- Publishable keys are safe to expose in your HTML/JavaScript
+- Secret keys must only be used on your backend server
+- The current key format does not match Stripe's standard format and may not work
+
 To enable real Stripe payments:
 
 1. **Get Stripe API Keys:**
    - Sign up at [stripe.com](https://stripe.com)
-   - Get your publishable key from the Dashboard
+   - Get your **publishable key** from the Dashboard (starts with `pk_test_` or `pk_live_`)
+   - **Never use secret keys** (those starting with `sk_`) in client-side code
 
 2. **Update the Publishable Key:**
    - Open `script.js`
-   - Replace the placeholder key on line 6:
+   - Replace the key on line 6 with your actual Stripe publishable key:
      ```javascript
      const stripe = Stripe('pk_test_YOUR_ACTUAL_PUBLISHABLE_KEY');
      ```
+   - The current key `ABCD-1234-EFGH-5678` is a placeholder and will not work with Stripe
 
 3. **Set Up Backend Server:**
    
