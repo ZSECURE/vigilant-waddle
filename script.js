@@ -1,9 +1,11 @@
 // Shopping cart state
 let cart = [];
 
-// Initialize Stripe (replace with your actual publishable key)
-// For demonstration, using test mode key - replace with your own
-const stripe = Stripe('pk_test_51234567890abcdefghijklmnopqrstuvwxyz');
+// Initialize Stripe
+// WARNING: This API key is exposed in client-side code. In a production environment,
+// only use publishable keys (pk_test_* or pk_live_*), never secret keys (sk_*).
+// The key below should be a Stripe PUBLISHABLE key only.
+const stripe = Stripe('ABCD-1234-EFGH-5678');
 
 // Cart functions
 function addToCart(productId, productName, priceInCents) {
